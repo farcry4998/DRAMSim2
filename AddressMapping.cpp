@@ -295,6 +295,64 @@ void addressMapping(uint64_t physicalAddress, unsigned &newTransactionChan, unsi
 		newTransactionRow = tempA ^ tempB;
 
 	}
+	else if (addressMappingScheme == Scheme8) // gagan : address mapping scheme         
+          {
+            //row:col:chan:rank:bank
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> bankBitWidth;
+	    tempB = physicalAddress << bankBitWidth;
+	    newTransactionBank = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> rankBitWidth;
+	    tempB = physicalAddress << rankBitWidth;
+	    newTransactionRank = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> channelBitWidth;
+	    tempB = physicalAddress << channelBitWidth;
+	    newTransactionChan = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> colHighBitWidth;
+	    tempB = physicalAddress << colHighBitWidth;
+	    newTransactionColumn = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> rowBitWidth;
+	    tempB = physicalAddress << rowBitWidth;
+	    newTransactionRow = tempA ^ tempB;
+
+          }
+	else if (addressMappingScheme == Scheme9) // gagan : address mapping scheme         
+          {
+            //row:rank:bank:chan:col
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> colHighBitWidth;
+	    tempB = physicalAddress << colHighBitWidth;
+	    newTransactionColumn = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> channelBitWidth;
+	    tempB = physicalAddress << channelBitWidth;
+	    newTransactionChan = tempA ^ tempB;
+	    
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> bankBitWidth;
+	    tempB = physicalAddress << bankBitWidth;
+	    newTransactionBank = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> rankBitWidth;
+	    tempB = physicalAddress << rankBitWidth;
+	    newTransactionRank = tempA ^ tempB;
+
+	    tempA = physicalAddress;
+	    physicalAddress = physicalAddress >> rowBitWidth;
+	    tempB = physicalAddress << rowBitWidth;
+	    newTransactionRow = tempA ^ tempB;
+
+          }
 
 	else
 	{

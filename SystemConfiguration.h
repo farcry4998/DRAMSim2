@@ -157,7 +157,9 @@ enum AddressMappingScheme
 	Scheme4,
 	Scheme5,
 	Scheme6,
-	Scheme7
+	Scheme7,
+	Scheme8, // gagan : address mapping scheme
+	Scheme9
 };
 
 // used in MemoryController and CommandQueue
