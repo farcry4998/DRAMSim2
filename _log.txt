@@ -1,0 +1,7 @@
+Jun 27, 2018
+===============
+compile, set DEBUG flags in system.ini
+
+command to simulate
+
+./DRAMSim -t traces/k6_aoe_02_short.trc -s system.ini -d ini/DDR3_micron_64M_8B_x4_sg15.ini -c 1000
